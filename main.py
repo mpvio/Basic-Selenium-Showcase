@@ -40,8 +40,8 @@ def example_com():
         # load search results
         try:
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "resInfo-0")))
-            timeTaken = driver.find_element(By.ID, "resInfo-0")
-            print("Search result info:", timeTaken.text)
+            time_taken = driver.find_element(By.ID, "resInfo-0")
+            print("Search result info:", time_taken.text)
         except Exception as e:
             print("Search result info element not found:", e)
         
