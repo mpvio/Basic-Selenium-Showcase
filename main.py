@@ -71,10 +71,13 @@ def tab_switching():
         print(f"Current window handle: {second_handle}")
 
         # get info from second tab
-        repository_count = driver.find_element(By.XPATH, "/html/body/div[1]/div[4]/main/div[1]/div/div/div[2]/div/nav/a[2]/span").text
-        repo_word = "repository" if repository_count == 1 else "repositories"
-        print(f"I have {repository_count} {repo_word}.")
-
+        try:
+            repository_count = driver.find_element(By.XPATH, "/html/body/div[1]/div[4]/main/div[1]/div/div/div[2]/div/nav/a[2]/span").text
+            repo_word = "repository" if repository_count == 1 else "repositories"
+            print(f"I have {repository_count} {repo_word}.")
+        except:
+            print("Error!", driver.window_handles)
+            
         # switch back to first tab
         driver.close()
         driver.switch_to.window(main_handle)
